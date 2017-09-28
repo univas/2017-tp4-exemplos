@@ -112,4 +112,11 @@ public class UserPanel extends JPanel {
 		return passwordFieldConstraints;
 	}
 
+	public User getUser() {
+		User user = new User();
+		user.setName(getNameTextField().getText());
+		user.setPassword(new String(getPasswordField().getPassword()));
+		return user;
+	}
+
 }
