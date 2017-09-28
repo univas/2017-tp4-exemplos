@@ -2,9 +2,9 @@ package br.edu.univas.login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ButtonsPanel extends JPanel {
@@ -13,6 +13,8 @@ public class ButtonsPanel extends JPanel {
 
 	private JButton okButton;
 	private JButton cancelButton;
+
+	private ArrayList<ButtonsListener> listeners = new ArrayList<>();
 
 	public ButtonsPanel() {
 		initialize();
@@ -51,12 +53,20 @@ public class ButtonsPanel extends JPanel {
 		return cancelButton;
 	}
 
+	public void addButtonsListener(ButtonsListener listener) {
+		listeners.add(listener);
+	}
+
 	private void okClicked() {
-		JOptionPane.showMessageDialog(this, "Clicou em OK");
+		for (ButtonsListener listener : listeners) {
+			listener.okPerformed();
+		}
 	}
 
 	private void cancelClicked() {
-		JOptionPane.showMessageDialog(this, "Clicou em cancelar");
+		for (ButtonsListener listener : listeners) {
+			listener.cancelPerformed();
+		}
 	}
 
 }
