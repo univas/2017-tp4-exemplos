@@ -3,6 +3,7 @@ package br.edu.univas.login;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class LoginFrame extends JFrame {
 
@@ -37,8 +38,33 @@ public class LoginFrame extends JFrame {
 	private ButtonsPanel getButtonsPanel() {
 		if (buttonsPanel == null) {
 			buttonsPanel = new ButtonsPanel();
+			buttonsPanel.addButtonsListener(new ButtonsListener() {
+				@Override
+				public void okPerformed() {
+					okClicked();
+				}
+
+				@Override
+				public void cancelPerformed() {
+					cancelClicked();
+				}
+			});
 		}
 		return buttonsPanel;
+	}
+
+	private void okClicked() {
+		User user = getUserPanel().getUser();
+		if ("admin".equals(user.getName()) && "1234".equals(user.getPassword())) {
+			JOptionPane.showMessageDialog(this, "Logado com sucesso!");
+		} else {
+			JOptionPane.showMessageDialog(this, "Erro no logon!",
+					"Erro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	private void cancelClicked() {
+		System.exit(0);
 	}
 
 	public static void main(String[] args) {
