@@ -1,7 +1,8 @@
 package br.edu.univas.si4.tp4.lojaonline.controller;
 
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
+import br.edu.univas.si4.tp4.lojaonline.model.Product;
 import br.edu.univas.si4.tp4.lojaonline.model.ProductDAO;
 import br.edu.univas.si4.tp4.lojaonline.view.ListProductsFrame;
 import br.edu.univas.si4.tp4.lojaonline.view.MainFrame;
@@ -14,7 +15,7 @@ public class SearchController {
 
 	public SearchController() {
 		mainFrame = new MainFrame(this);
-		listProductsFrame = new ListProductsFrame(this);
+		listProductsFrame = new ListProductsFrame();
 		productDAO = new ProductDAO();
 	}
 
@@ -23,8 +24,9 @@ public class SearchController {
 	}
 
 	public void search(String productName) {
-		JOptionPane.showMessageDialog(null, "Search string: " + productName);
-		// TODO: Implementar...
+		ArrayList<Product> products = productDAO.listByName(productName);
+		listProductsFrame.populateList(products);
+		listProductsFrame.setVisible(true);
 	}
 
 }
