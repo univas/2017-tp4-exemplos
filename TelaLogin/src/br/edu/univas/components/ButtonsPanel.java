@@ -13,6 +13,7 @@ public class ButtonsPanel extends JPanel {
 
 	private JButton okButton;
 	private JButton cancelButton;
+	private JButton helpButton;
 
 	private ArrayList<ButtonsListener> listeners = new ArrayList<>();
 
@@ -23,6 +24,7 @@ public class ButtonsPanel extends JPanel {
 	private void initialize() {
 		add(getOkButton());
 		add(getCancelButton());
+		add(getHelpButton());
 	}
 
 	private JButton getOkButton() {
@@ -53,6 +55,20 @@ public class ButtonsPanel extends JPanel {
 		return cancelButton;
 	}
 
+	private JButton getHelpButton() {
+		if (helpButton == null) {
+			helpButton = new JButton();
+			helpButton.setText("Ajuda");
+			helpButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					helpClicked();
+				}
+			});
+		}
+		return helpButton;
+	}
+
 	public void addButtonsListener(ButtonsListener listener) {
 		listeners.add(listener);
 	}
@@ -66,6 +82,12 @@ public class ButtonsPanel extends JPanel {
 	private void cancelClicked() {
 		for (ButtonsListener listener : listeners) {
 			listener.cancelPerformed();
+		}
+	}
+
+	private void helpClicked() {
+		for (ButtonsListener listener : listeners) {
+			listener.helpPerformed();
 		}
 	}
 

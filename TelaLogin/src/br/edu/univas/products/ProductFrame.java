@@ -45,21 +45,36 @@ public class ProductFrame extends JFrame {
 				public void okPerformed() {
 					okClicked();
 				}
+
 				@Override
 				public void cancelPerformed() {
 					cancelClicked();
+				}
+
+				@Override
+				public void helpPerformed() {
+					helpClicked();
 				}
 			});
 		}
 		return buttonsPanel;
 	}
-	
+
 	private void okClicked() {
 		Product product = getProductDataPanel().getProduct();
 		JOptionPane.showMessageDialog(this, product);
 	}
-	
+
 	private void cancelClicked() {
+	}
+
+	private void helpClicked() {
+		String message = "Ajuda do cadastro de produtos:\n";
+		message += "1 - Preencha os dados do produto:\n";
+		message += "    Nome, Quantidade e Código\n";
+		message += "2 - Clique em OK";
+		JOptionPane.showMessageDialog(this, message,
+				"Ajuda", JOptionPane.QUESTION_MESSAGE);
 	}
 
 	public static void main(String[] args) {

@@ -46,10 +46,13 @@ public class LoginFrame extends JFrame {
 				public void okPerformed() {
 					okClicked();
 				}
-
 				@Override
 				public void cancelPerformed() {
 					cancelClicked();
+				}
+				@Override
+				public void helpPerformed() {
+					helpClicked();
 				}
 			});
 		}
@@ -68,6 +71,11 @@ public class LoginFrame extends JFrame {
 
 	private void cancelClicked() {
 		System.exit(0);
+	}
+
+	private void helpClicked() {
+		JOptionPane.showMessageDialog(this, "Entre com usuário e senha",
+				"Ajuda", JOptionPane.QUESTION_MESSAGE);
 	}
 
 	public static void main(String[] args) {
