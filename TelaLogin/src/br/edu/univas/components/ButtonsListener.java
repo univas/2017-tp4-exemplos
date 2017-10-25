@@ -1,4 +1,4 @@
-package br.edu.univas.login;
+package br.edu.univas.components;
 
 public interface ButtonsListener {
 

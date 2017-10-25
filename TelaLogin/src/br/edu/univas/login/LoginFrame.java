@@ -5,6 +5,9 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import br.edu.univas.components.ButtonsListener;
+import br.edu.univas.components.ButtonsPanel;
+
 public class LoginFrame extends JFrame {
 
 	private static final long serialVersionUID = -4249047705813459153L;
